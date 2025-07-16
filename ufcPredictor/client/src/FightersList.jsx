@@ -1,13 +1,16 @@
-
+import { currentFighters } from "./data/tempFighter"
+import FighterCard from "./components/FighterCard"
+import './index.css'
 function FightersList(){
     return (
         <>
             <h1>Fighters</h1>
-            <ul>
-                <li>Israel Adesanya</li>
-                <li>Alexander Volkanovski</li>
-                <li>Dan Hooker</li>
-            </ul>
+            <div className="fighterGrid">
+                {currentFighters.map((currFighter, index) => (
+                    <FighterCard fighter={currFighter} />
+                ))}
+            </div>
+            
         </>
     )
 }

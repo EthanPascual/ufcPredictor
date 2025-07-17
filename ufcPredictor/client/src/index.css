@@ -8,6 +8,7 @@ body{
 
 .fighterGrid{
   display: flex;
+  flex-wrap: wrap;
 }
 
 .input-wrapper {

@@ -5,7 +5,9 @@
     justify-content: space-between;
     align-items: stretch;
     gap: 2rem;
-    padding: 0rem 1rem;
+    width: 100%;
+    position: fixed;
+    top:0;
 }
 .nav a {
     color:inherit;

@@ -71,11 +71,6 @@ input:focus{
   background-color: #999;
 }
 
-.infoContainer {
-  padding: 0rem 1.5rem;
-  min-height: 100vh;
-}
-
 .cardContainer {
   display: flex;
   flex-wrap: flex;

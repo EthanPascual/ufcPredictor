@@ -34,3 +34,36 @@ input {
 input:focus{
   outline:none;
 }
+
+.tableContainer {
+  margin: 1rem;
+  display: flex;
+}
+
+.tableContainer table {
+  width: 100%;
+  font-size: 1.25rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+
+.tableContainer th {
+  background-color: black;
+  color: white;
+}
+
+.tableContainer td {
+  text-align: center;
+}
+
+.tableContainer tr {
+  cursor: pointer;
+}
+
+.tableContainer tr:nth-child(odd){
+  background-color: #999;
+}
+
+.tableContainer tr:hover{
+  background-color: #888;
+}

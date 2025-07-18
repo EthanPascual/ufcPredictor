@@ -7,6 +7,7 @@ body{
 }
 .main{
   margin-top: 6rem;
+  padding: 0rem 1rem;
 }
 .fighterGrid{
   display: flex;
@@ -73,4 +74,9 @@ input:focus{
 .infoContainer {
   padding: 0rem 1.5rem;
   min-height: 100vh;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: flex;
 }

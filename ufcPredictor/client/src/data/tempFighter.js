@@ -25,5 +25,29 @@ export const currentFighters = [
         draw: 0,
         nickname: "The Hangman",
         image:hooker
+    },
+    {
+        name: "Max Holloway",
+        wins: 24,
+        losses: 5,
+        draw: 0,
+        nickname: "The Blessed Express",
+        image: israel
+    },
+    {
+        name: "Robert Whittaker",
+        wins: 27,
+        losses: 4,
+        draw: 0,
+        nickname: "N/A",
+        image: alexVolk
+    },
+    {
+        name: "Jalin Turner",
+        wins: 24,
+        losses: 12,
+        draw: 0,
+        nickname: "N/A",
+        image:hooker
     }
 ]

@@ -1,8 +1,15 @@
 import { mockFights } from "./data/mockFight"
 import { useNavigate } from "react-router"
+import axios from 'axios'
+import { useEffect } from "react"
+
 
 function FightsList(){
     const navigate = useNavigate()
+    useEffect(() => {
+        axios.get('http://localhost:3000/testing').then(res=>console.log(res.data))
+    }, [])
+
     return (
         <>
             <h1>Fights:</h1>

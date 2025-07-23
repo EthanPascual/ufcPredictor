@@ -1,9 +1,15 @@
 import { currentFighters } from "./data/tempFighter"
 import FighterCard from "./components/FighterCard"
 import './index.css'
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from 'axios'
 function FightersList(){
     const [displayFighters, setFighters] = useState(currentFighters)
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/fighters').then((res) => setFighters(res.data));
+    }, [])
+
     const [input, setInput] = useState('')
     const handleSearch = (text) => {
         setInput(text)

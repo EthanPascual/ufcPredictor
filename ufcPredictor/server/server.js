@@ -26,6 +26,7 @@ const Fights = require('./models/fightSchema')
 
 const Fighters = mongoose.model('Fighter', fighterSchema);
 
+
 app.get('/fighters', async (req, res) => {
     let fighters = await Fighters.find({});
     res.send(fighters);

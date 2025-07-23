@@ -21,7 +21,30 @@ app.get('/testing', (req, res) => {
     res.send('Hello World!')
 })
 
+const fighterSchema = require('./models/fighterSchema');
+const Fights = require('./models/fightSchema')
 
+const Fighters = mongoose.model('Fighter', fighterSchema);
+
+app.get('/fighters', async (req, res) => {
+    let fighters = await Fighters.find({});
+    res.send(fighters);
+})
+
+app.get('/fights', async (req, res) => {
+    let fights = await Fights.find({});
+    res.send(fights);
+})
+
+app.get('/fighters/:name', async (req, res) => {
+    let fighter = await Fighters.findOne({name: req.params.name});
+    res.send(fighter)
+})
+
+app.get('/fights/:id', async (req, res) => {
+    let fight = await Fights.findById(req.params.id)
+    res.send(fight)
+})
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)

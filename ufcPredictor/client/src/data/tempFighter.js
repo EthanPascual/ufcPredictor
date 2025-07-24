@@ -1,6 +1,4 @@
-import alexVolk from '../assets/alexanderVolkanovski.avif'
-import israel from '../assets/israeladesanya.avif'
-import hooker from '../assets/danhooker.avif'
+
 export const currentFighters = [
     {
         name: "Israel Adesanya",
@@ -8,7 +6,6 @@ export const currentFighters = [
         losses: 5,
         draw: 0,
         nickname: "The Last Stylebender",
-        image: israel
     },
     {
         name: "Alexander Volkanovski",
@@ -16,7 +13,6 @@ export const currentFighters = [
         losses: 4,
         draw: 0,
         nickname: "The Great",
-        image: alexVolk
     },
     {
         name: "Dan Hooker",
@@ -24,7 +20,7 @@ export const currentFighters = [
         losses: 12,
         draw: 0,
         nickname: "The Hangman",
-        image:hooker
+
     },
     {
         name: "Max Holloway",
@@ -32,7 +28,6 @@ export const currentFighters = [
         losses: 5,
         draw: 0,
         nickname: "The Blessed Express",
-        image: israel
     },
     {
         name: "Robert Whittaker",
@@ -40,7 +35,6 @@ export const currentFighters = [
         losses: 4,
         draw: 0,
         nickname: "N/A",
-        image: alexVolk
     },
     {
         name: "Jalin Turner",
@@ -48,6 +42,5 @@ export const currentFighters = [
         losses: 12,
         draw: 0,
         nickname: "N/A",
-        image:hooker
     }
 ]

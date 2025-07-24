@@ -8,7 +8,7 @@ function FighterCard({fighter}){
         <div className='padded'>
         <Link to={link}>
         <div className="card">
-            <img src={fighter.image} />
+            <img src={`/${fighter.image}`} />
             <h2>{fighter.name}</h2>
             <p>{fighter.wins}/{fighter.losses}/{fighter.draw}</p>
         </div>

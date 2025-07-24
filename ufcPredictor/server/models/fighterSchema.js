@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const fighterSchema = mongoose.Schema({
     name: String,
+    nickname: String,
     height: Number,
     reach: Number,
     stance: String,
@@ -16,8 +17,8 @@ const fighterSchema = mongoose.Schema({
     SubAvg: Number,
     wins: Number,
     losses: Number,
-    draws: Number,
-    imgURL: String
+    draw: Number,
+    image: String
 
 });
 

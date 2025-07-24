@@ -4,10 +4,13 @@ import './index.css'
 import { useState, useEffect } from "react"
 import axios from 'axios'
 function FightersList(){
-    const [displayFighters, setFighters] = useState(currentFighters)
+    const [displayFighters, setFighters] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:3000/fighters').then((res) => setFighters(res.data));
+        async function fetchData(){
+            await axios.get('http://localhost:3000/fighters').then((res) => setFighters(res.data));
+        }
+        fetchData();
     }, [])
 
     const [input, setInput] = useState('')

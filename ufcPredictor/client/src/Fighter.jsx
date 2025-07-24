@@ -10,20 +10,27 @@ function Fighter(){
     let params = useParams();
     let navigate = useNavigate()
     const [currFighter, setFighter] = useState();
+    const [fights, setFights] = useState()
     useEffect(() => {
         async function fetchData(){
             console.log(params.name)
             await axios.get(`http://localhost:3000/fighters/${params.name}`).then(res => {
                 setFighter(res.data);
                 console.log("Teseting");
+
             });
+            await axios.get('http://localhost:3000/fights').then(res => {
+                const allFights = res.data;
+                const filtered = allFights.filter(fight => fight.fighter1.name == params.name || fight.fighter2.name == params.name);
+                setFights(filtered);
+            })
         }
         fetchData();
     }, [params.name])
-    let fights = mockFights.filter(fight => fight.fighter1 == params.name || fight.fighter2 == params.name)
+    
     return (
         <>
-            {currFighter ? (
+            {fights ? (
                 <>
                 <div className="">
             <h1>{currFighter.name}</h1>
@@ -47,9 +54,9 @@ function Fighter(){
                 <tbody>
                     {
                         fights.map((fight, index) => (
-                            <tr key={fight.fightId} onClick={() => navigate('/fight/' + fight.fightId)}>
-                                <td>{fight.winner === fight.fighter1 ? <b>{fight.fighter1}</b> : fight.fighter1}</td>
-                                <td>{fight.winner === fight.fighter2 ? <b>{fight.fighter2}</b> : fight.fighter2}</td>
+                            <tr key={fight._id} onClick={() => navigate('/fight/' + fight._id)}>
+                                <td>{fight.winner.name === fight.fighter1.name ? <b>{fight.fighter1.name}</b> : fight.fighter1.name}</td>
+                                <td>{fight.winner.name === fight.fighter2.name ? <b>{fight.fighter2.name}</b> : fight.fighter2.name}</td>
                                 <td>{fight.method}</td>
                                 <td>{fight.round}</td>
                                 <td>{fight.time}</td>

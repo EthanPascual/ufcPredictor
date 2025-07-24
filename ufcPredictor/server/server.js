@@ -34,7 +34,7 @@ app.get('/fighters', async (req, res) => {
 })
 
 app.get('/fights', async (req, res) => {
-    let fights = await Fights.find({});
+    let fights = await Fights.find({}).populate('fighter1').populate('fighter2').populate('winner');
     res.send(fights);
 })
 
@@ -44,7 +44,7 @@ app.get('/fighters/:name', async (req, res) => {
 })
 
 app.get('/fights/:id', async (req, res) => {
-    let fight = await Fights.findById(req.params.id)
+    let fight = await Fights.findById(req.params.id).populate('fighter1').populate('fighter2').populate('winner');
     res.send(fight)
 })
 

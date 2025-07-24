@@ -1,24 +1,35 @@
 import { useParams } from "react-router";
-import {mockFights} from "./data/mockFight"
 import FighterCard from "./components/FighterCard"
-import { currentFighters } from "./data/tempFighter"; 
+import {useState, useEffect} from "react";
+import axios from 'axios';
 
 function Fight(){
     let params = useParams();
-    let currFight = mockFights.find(fight => fight.fightId == params.fightId)
-    let fighter1 = currentFighters.find(fighter => currFight.fighter1 == fighter.name)
-    let fighter2 = currentFighters.find(fighter => currFight.fighter2 == fighter.name)
-    console.log(currFight)
+    const [currFight, setCurrFight] = useState();
+    
+    useEffect(() => {
+        async function fetchData(){
+            await axios.get(`http://localhost:3000/fights/${params.fightId}`).then(res => setCurrFight(res.data))
+        }
+        fetchData();
+    });
 
     return(
         <>
-            <h2>{currFight.fighter1} vs. {currFight.fighter2}</h2>
+        {currFight ? (
+            <>
+                <h2>{currFight.fighter1.name} vs. {currFight.fighter2.name}</h2>
             <p>{currFight.date}</p>
             <div className="cardContainer">
-                <FighterCard fighter={fighter1}/> <FighterCard fighter={fighter2} />
+                <FighterCard fighter={currFight.fighter1}/> <FighterCard fighter={currFight.fighter2} />
             </div>
-            <h3>Winner: {currFight.winner}</h3>
+            <h3>Winner: {currFight.winner.name}</h3>
             <p>Method: {currFight.method}<br/>Round: {currFight.round} <br/> Time: {currFight.time}</p>
+            </>
+        ) : (
+            <p>Loading Fight....</p>
+        )}
+            
         </>
     )
 }

@@ -26,6 +26,8 @@ const fightSchema = mongoose.Schema({
     subAtt2: Number,
     rev2: Number,
     ctrl2: Number,
+    method: String,
+    date: String
 });
 
 

@@ -1,18 +1,25 @@
 import { mockFights } from "./data/mockFight"
 import { useNavigate } from "react-router"
 import axios from 'axios'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 
 function FightsList(){
+    const [fights, setFights] = useState([])
+
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get('http://localhost:3000/testing').then(res=>console.log(res.data))
+        async function fetchData(){
+            await axios.get('http://localhost:3000/fights').then(res=>setFights(res.data))
+        }
+        fetchData();
     }, [])
 
     return (
         <>
-            <h1>Fights:</h1>
+        {fights ? (
+            <>
+                <h1>Fights:</h1>
             <div className="tableContainer">
                 <table>
                     <thead>
@@ -27,10 +34,10 @@ function FightsList(){
                     </thead>
                     <tbody>
                         {
-                            mockFights.map((fight, index) => (
-                                <tr key={fight.fightId} onClick={() => navigate('/fight/' + fight.fightId)}>
-                                    <td>{fight.winner === fight.fighter1 ? <b>{fight.fighter1}</b> : fight.fighter1}</td>
-                                    <td>{fight.winner === fight.fighter2 ? <b>{fight.fighter2}</b> : fight.fighter2}</td>
+                            fights.map((fight, index) => (
+                                <tr key={fight._id} onClick={() => navigate('/fight/' + fight._id)}>
+                                    <td>{fight.winner.name === fight.fighter1.name ? <b>{fight.fighter1.name}</b> : fight.fighter1.name}</td>
+                                    <td>{fight.winner.name === fight.fighter2.name ? <b>{fight.fighter2.name}</b> : fight.fighter2.name}</td>
                                     <td>{fight.method}</td>
                                     <td>{fight.round}</td>
                                     <td>{fight.time}</td>
@@ -41,6 +48,11 @@ function FightsList(){
                     </tbody>
                 </table>
             </div>
+            </>
+        ):(
+            <p>Loading Fights....</p>
+        )}
+            
         </>
     )
 }

@@ -4,6 +4,7 @@ const fighterSchema = mongoose.Schema({
     name: String,
     nickname: String,
     height: Number,
+    weight: Number,
     reach: Number,
     stance: String,
     DOB: String,

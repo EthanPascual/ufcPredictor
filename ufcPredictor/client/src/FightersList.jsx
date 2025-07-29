@@ -5,10 +5,14 @@ import { useState, useEffect } from "react"
 import axios from 'axios'
 function FightersList(){
     const [displayFighters, setFighters] = useState([])
+    const [filterFighters, setFilterFighters] = useState([])
 
     useEffect(() => {
         async function fetchData(){
-            await axios.get('http://localhost:3000/fighters').then((res) => setFighters(res.data));
+            await axios.get('http://localhost:3000/fighters').then((res) => {
+                setFighters(res.data)
+                setFilterFighters(res.data)
+            });
         }
         fetchData();
     }, [])
@@ -17,7 +21,7 @@ function FightersList(){
     const handleSearch = (text) => {
         setInput(text)
         text = text.toLowerCase()
-        setFighters(currentFighters.filter(fighter => {
+        setFilterFighters(displayFighters.filter(fighter => {
             let lowerName = fighter.name.toLowerCase();
             return lowerName.includes(text);
         }));
@@ -33,7 +37,7 @@ function FightersList(){
                     onChange={e => handleSearch(e.target.value)}/>
             </div>
             <div className="fighterGrid">
-                {displayFighters.map((currFighter, index) => (
+                {filterFighters.map((currFighter, index) => (
                     <FighterCard key={index} fighter={currFighter} />
                 ))}
             </div>

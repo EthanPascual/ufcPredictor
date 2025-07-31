@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { currentFighters } from "./data/tempFighter"
 import axios from 'axios'
+import Select from 'react-select'
 
 function Predict(){
     const [fighters, setFighters] = useState()
@@ -30,18 +31,14 @@ function Predict(){
             <>
                 <h1>Predict a Fight</h1>
             <p>Select 2 Fighters:</p>
-            <select value={fighter1} onChange={e=>(setFighter1(e.target.value))}>
-                <option value="" disabled>Fighter 1...</option>
-                {fighters.map((fighter, index) => (
-                    <option key={index} value={fighter.name}>{fighter.name}</option>
-                ))}
-            </select>
-            <select value={fighter2} onChange={e=>(setFighter2(e.target.value))}>
-                <option value="" disabled>Fighter 2...</option>
-                {fighters.map((fighter, index) => (
-                    <option key={index} value={fighter.name}>{fighter.name}</option>
-                ))}
-            </select>
+            <Select 
+                options={fighters.map(f => ({value: f.name, label: f.name}))}
+                onChange={selected => setFighter1(selected.value)}
+                />
+            <Select 
+                options={fighters.map(f => ({value: f.name, label: f.name}))}
+                onChange={selected => setFighter2(selected.value)}
+                />
             <button onClick={handleClick}>Predict</button>
             {result && <p>{result}</p>}
             </>

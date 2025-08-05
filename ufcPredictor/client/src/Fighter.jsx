@@ -4,11 +4,13 @@ import { mockFights } from "./data/mockFight"
 import "./index.css"
 import { useNavigate } from "react-router"
 import axios from 'axios'
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { FightContext } from "./DataContext"
 
 function Fighter(){
     let params = useParams();
     let navigate = useNavigate()
+    const fightData = useContext(FightContext)
     const [currFighter, setFighter] = useState();
     const [fights, setFights] = useState()
     useEffect(() => {
@@ -19,11 +21,8 @@ function Fighter(){
                 console.log("Teseting");
 
             });
-            await axios.get('http://localhost:3000/fights').then(res => {
-                const allFights = res.data;
-                const filtered = allFights.filter(fight => fight.fighter1.name == params.name || fight.fighter2.name == params.name);
-                setFights(filtered);
-            })
+            const filtered = fightData.filter(fight => fight.fighter1.name == params.name || fight.fighter2.name == params.name);
+            setFights(filtered);
         }
         fetchData();
     }, [params.name])

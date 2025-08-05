@@ -1,19 +1,19 @@
 import { mockFights } from "./data/mockFight"
 import { useNavigate } from "react-router"
 import axios from 'axios'
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { FightContext } from "./DataContext"
 
 
 function FightsList(){
+    const fightData = useContext(FightContext)
+
     const [fights, setFights] = useState([])
 
     const navigate = useNavigate()
     useEffect(() => {
-        async function fetchData(){
-            await axios.get('http://localhost:3000/fights').then(res=>setFights(res.data))
-        }
-        fetchData();
-    }, [])
+        setFights(fightData)
+    }, [fightData])
 
     return (
         <>

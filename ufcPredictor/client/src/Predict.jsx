@@ -1,20 +1,19 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { currentFighters } from "./data/tempFighter"
 import axios from 'axios'
 import Select from 'react-select'
+import { FightContext } from "./DataContext"
 
 function Predict(){
+    const fighterData = useContext(FightContext)
     const [fighters, setFighters] = useState()
     const [fighter1, setFighter1] = useState('')
     const [fighter2, setFighter2] = useState('')
     const [result, setResult] = useState('')
 
     useEffect(() => {
-        async function fetchData(){
-            await axios.get('http://localhost:3000/fighters').then(res => setFighters(res.data))
-        }
-        fetchData()
-    }, [])
+        setFighters(fighterData)
+    }, [fighterData])
 
     const handleClick = () => {
         if(fighter1 && fighter2){

@@ -3,6 +3,9 @@ import { Outlet } from "react-router";
 import './index.css'
 
 function Layout(){
+
+
+    
     return(
         <>
             <NavBar />

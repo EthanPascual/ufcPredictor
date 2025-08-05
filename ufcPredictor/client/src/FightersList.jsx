@@ -1,21 +1,19 @@
 import { currentFighters } from "./data/tempFighter"
 import FighterCard from "./components/FighterCard"
 import './index.css'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import axios from 'axios'
+import { FighterContext } from "./DataContext"
 function FightersList(){
+    const fighterData = useContext(FighterContext)
+
     const [displayFighters, setFighters] = useState([])
     const [filterFighters, setFilterFighters] = useState([])
 
     useEffect(() => {
-        async function fetchData(){
-            await axios.get('http://localhost:3000/fighters').then((res) => {
-                setFighters(res.data)
-                setFilterFighters(res.data)
-            });
-        }
-        fetchData();
-    }, [])
+        setFighters(fighterData)
+        setFilterFighters(fighterData)
+    }, [fighterData])
 
     const [input, setInput] = useState('')
     const handleSearch = (text) => {

@@ -22,9 +22,10 @@ app.get('/testing', (req, res) => {
 })
 
 const fighterSchema = require('./models/fighterSchema');
-const Fights = require('./models/fightSchema')
+const fightSchema = require('./models/fightSchema')
 
 const Fighters = mongoose.model('Fighter', fighterSchema);
+const Fights = mongoose.model('Fights', fightSchema);
 
 
 

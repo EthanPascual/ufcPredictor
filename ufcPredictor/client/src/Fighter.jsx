@@ -55,8 +55,8 @@ function Fighter(){
                     {
                         fights.map((fight, index) => (
                             <tr key={fight._id} onClick={() => navigate('/fight/' + fight._id)}>
-                                <td>{fight.winner.name === fight.fighter1.name ? <b>{fight.fighter1.name}</b> : fight.fighter1.name}</td>
-                                <td>{fight.winner.name === fight.fighter2.name ? <b>{fight.fighter2.name}</b> : fight.fighter2.name}</td>
+                                <td>{fight.winner && fight.winner.name === fight.fighter1.name ? <b>{fight.fighter1.name}</b> : fight.fighter1.name}</td>
+                                <td>{fight.winner && fight.winner.name === fight.fighter2.name ? <b>{fight.fighter2.name}</b> : fight.fighter2.name}</td>
                                 <td>{fight.method}</td>
                                 <td>{fight.round}</td>
                                 <td>{fight.time}</td>

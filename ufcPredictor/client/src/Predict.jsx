@@ -14,7 +14,7 @@ function Predict(){
             await axios.get('http://localhost:3000/fighters').then(res => setFighters(res.data))
         }
         fetchData()
-    })
+    }, [])
 
     const handleClick = () => {
         if(fighter1 && fighter2){

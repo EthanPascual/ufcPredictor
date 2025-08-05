@@ -23,7 +23,8 @@ function Fight(){
             <div className="cardContainer">
                 <FighterCard fighter={currFight.fighter1}/> <FighterCard fighter={currFight.fighter2} />
             </div>
-            <h3>Winner: {currFight.winner.name}</h3>
+            <h3>Winner: {currFight.winner && currFight.winner.name}</h3>
+            {!currFight.winner && <h3>Draw</h3>}
             <p>Method: {currFight.method}<br/>Round: {currFight.round} <br/> Time: {currFight.time}</p>
             </>
         ) : (

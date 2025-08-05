@@ -31,4 +31,4 @@ const fightSchema = mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Fight', fightSchema);
+module.exports = fightSchema
